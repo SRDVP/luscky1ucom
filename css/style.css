@@ -1,0 +1,445 @@
+/* General Body and Font Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #000 0%, #1a1a1a 50%, #000 100%);
+    color: #fff; /* White text by default */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    box-shadow: inset 0 0 100px rgba(255, 215, 0, 0.05);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #FFD700; /* Gold for headings */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    color: #ccc; /* Lighter grey for paragraph text */
+}
+
+.landing-page {
+    width: 430px; /* iPhone 14 Pro Max exact width */
+    max-width: 430px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Header Section */
+.header {
+    background-color: #000;
+    padding: clamp(10px, 2vw, 20px) clamp(15px, 3vw, 25px); /* Responsive padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #FFD700;
+    min-height: clamp(50px, 8vh, 80px); /* Responsive height */
+}
+
+.logo img {
+    max-width: clamp(100px, 25vw, 150px); /* Responsive logo size */
+    height: auto;
+}
+
+.tagline p {
+    color: #FFD700;
+    font-size: clamp(0.9em, 2vw, 1.3em); /* Responsive font size */
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    text-align: center;
+    padding: 0;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+    overflow: hidden;
+    min-height: clamp(500px, 80vh, 800px); /* Responsive height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 50px rgba(255, 215, 0, 0.1);
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.hero-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(150px, 25vh, 250px); /* Responsive height */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(255, 215, 0, 0.1) 30%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 90%;
+    max-width: clamp(350px, 90vw, 600px); /* Responsive max width */
+    padding: clamp(20px, 5vw, 40px) clamp(15px, 3vw, 25px); /* Responsive padding */
+    margin-top: clamp(300px, 50vh, 500px); /* Responsive margin */
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5em, 5vw, 4em); /* Responsive font size */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    color: #FFD700;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hero-content .subtitle {
+    font-size: clamp(1.1em, 2.5vw, 1.5em); /* Responsive font size */
+    margin-bottom: 40px;
+    color: #FFD700;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%); /* Premium gold gradient */
+    color: #000;
+    padding: clamp(12px, 2.5vw, 18px) clamp(25px, 5vw, 35px); /* Smaller, friendlier padding */
+    border: 2px solid #FFD700; /* Thinner, friendlier border */
+    border-radius: 20px; /* More rounded, friendlier corners */
+    font-size: clamp(1em, 2vw, 1.2em); /* Smaller, friendlier font size */
+    font-weight: 600; /* Less bold, more friendly */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.6), /* Softer glow */
+        inset 0 1px 3px rgba(255, 255, 255, 0.2), /* Subtle inner highlight */
+        0 3px 10px rgba(0, 0, 0, 0.2); /* Lighter drop shadow */
+    text-transform: none; /* Remove uppercase for friendlier look */
+    letter-spacing: 0.5px; /* Less spacing for friendlier feel */
+    font-family: 'Montserrat', sans-serif;
+    width: auto; /* Auto width instead of full width */
+    max-width: clamp(200px, 60vw, 280px); /* Smaller max width */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Lighter text shadow */
+    position: relative;
+    overflow: hidden;
+    display: inline-block; /* Inline block for friendlier appearance */
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%); /* Enhanced gradient on hover */
+    border-color: #FFA500;
+    transform: translateY(-2px) scale(1.01); /* Gentler, friendlier hover effect */
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.8), /* Softer glow */
+        inset 0 1px 3px rgba(255, 255, 255, 0.3), /* Subtle inner highlight */
+        0 4px 12px rgba(0, 0, 0, 0.3); /* Lighter drop shadow */
+}
+
+/* Pulse effect for CTA button */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); } /* Gentler pulse */
+    100% { transform: scale(1); }
+}
+
+.pulse-effect {
+    animation: pulse 3s infinite; /* Slower, more friendly pulse */
+}
+
+/* Promotion Banner */
+.promotion-banner {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #FFD700;
+    border-bottom: 2px solid #FFD700;
+    margin: 20px 0;
+}
+
+.promotion-banner h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.promotion-banner p {
+    font-size: 1.1em;
+    color: #eee;
+}
+
+/* Game Categories Section */
+.game-categories {
+    padding: clamp(20px, 4vw, 30px) clamp(10px, 2vw, 15px); /* Responsive padding */
+    background-color: #1a1a1a;
+}
+
+.game-categories h2 {
+    font-size: clamp(1.8em, 4vw, 2.5em); /* Responsive font size */
+    margin-bottom: clamp(15px, 3vw, 25px);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns to show all 6 games in 2 rows */
+    gap: clamp(5px, 1vw, 10px); /* Smaller gap to fit better */
+    margin-top: 20px;
+    max-height: none; /* Remove any height restrictions */
+    width: 100%;
+    padding: 0 5px; /* Small padding to prevent overflow */
+}
+
+.game-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); /* Premium dark gradient */
+    border-radius: 12px; /* More rounded corners */
+    padding: 10px; /* Slightly more padding */
+    text-align: center;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.6), /* Deeper shadow */
+        0 0 20px rgba(255, 215, 0, 0.2); /* Subtle golden glow */
+    transition: all 0.3s ease;
+    border: 2px solid #FFD700; /* Thick golden border */
+    height: 110px; /* Fixed height to fit 2 rows clearly */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Enhanced lift and scale */
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.8), /* Deeper shadow */
+        0 0 30px rgba(255, 215, 0, 0.6), /* Stronger golden glow */
+        inset 0 1px 3px rgba(255, 215, 0, 0.2); /* Inner golden highlight */
+    border-color: #FFA500; /* Brighter border on hover */
+}
+
+.game-card img {
+    width: 100%; /* Full width of the card */
+    height: 60px; /* Fixed height to maintain aspect ratio */
+    object-fit: cover; /* Cover the full area */
+    margin-bottom: 6px; /* Slightly more margin */
+    border-radius: 8px; /* More rounded */
+    border: 2px solid #FFD700; /* Thicker golden border */
+    align-self: center;
+    box-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.4), /* Golden glow around image */
+        0 2px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    transition: all 0.3s ease;
+}
+
+.game-card h3 {
+    font-size: 0.8em; /* Fixed smaller font size */
+    margin-bottom: 2px;
+    color: #FFD700;
+    line-height: 1.1;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for depth */
+    transition: all 0.3s ease;
+}
+
+.game-card p {
+    font-size: 0.65em; /* Fixed smaller font size */
+    color: #fff; /* Brighter white text */
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+    transition: all 0.3s ease;
+}
+
+/* Trust and Security Section */
+.trust-security {
+    padding: 30px 15px;
+    background-color: #000;
+    text-align: center;
+    border-top: 2px dashed #FFD700;
+    border-bottom: 2px dashed #FFD700;
+    margin: 20px 0;
+}
+
+.trust-security h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.trust-security p {
+    font-size: 1em;
+    color: #eee;
+    margin-bottom: 20px;
+}
+
+.security-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.security-icons img {
+    max-width: 70px;
+    height: auto;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+/* Call to Action Footer */
+.cta-footer {
+    padding: 40px 20px;
+    background: linear-gradient(45deg, #1a1a1a 0%, #333333 100%);
+    text-align: center;
+    border-top: 2px solid #FFD700;
+}
+
+.cta-footer h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.cta-footer p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #eee;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+    border-top: 2px solid #FFD700;
+}
+
+.footer p {
+    margin: 0 0 10px 0;
+    color: #888;
+}
+
+.social-media a img {
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+    filter: grayscale(100%) brightness(0.7) invert(0.8) sepia(1) saturate(5) hue-rotate(15deg); /* To make goldish */
+    transition: transform 0.2s ease;
+}
+
+.social-media a img:hover {
+    transform: scale(1.1);
+    filter: none; /* Remove filter on hover to show original gold if any */
+}
+
+/* Responsive Adjustments */
+@media (min-width: 600px) {
+    .landing-page {
+        width: 430px; /* Keep iPhone 14 Pro Max width */
+        max-width: 430px;
+    }
+}
+
+@media (min-width: 768px) {
+    .landing-page {
+        width: 430px; /* Keep iPhone 14 Pro Max width */
+        max-width: 430px;
+    }
+    .hero-content h1 {
+        font-size: 4em;
+    }
+    .hero-section {
+        min-height: 600px;
+    }
+    .hero-content .subtitle {
+        font-size: 1.5em;
+    }
+    .hero-image::after {
+        height: 250px;
+    }
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns for all screen sizes */
+        gap: 8px; /* Slightly larger gap on tablets */
+    }
+    .game-card {
+        height: 120px; /* Slightly taller on tablets */
+        padding: 10px;
+    }
+    .game-card img {
+        width: 100%; /* Keep full width on tablets */
+        height: 65px; /* Slightly taller on tablets */
+    }
+    .game-card h3 {
+        font-size: 0.85em;
+    }
+    .game-card p {
+        font-size: 0.7em;
+    }
+}
+
+@media (min-width: 1024px) {
+    .landing-page {
+        width: 430px; /* Keep iPhone 14 Pro Max width */
+        max-width: 430px;
+    }
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns for all screen sizes */
+        gap: 10px; /* Larger gap on desktop */
+    }
+    .game-card {
+        height: 130px; /* Taller on desktop */
+        padding: 12px;
+    }
+    .game-card img {
+        width: 100%; /* Keep full width on desktop */
+        height: 70px; /* Taller on desktop */
+    }
+    .game-card h3 {
+        font-size: 0.9em;
+    }
+    .game-card p {
+        font-size: 0.75em;
+    }
+}
+/* Payment Icons Section */
+.payment-icons {
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center;
+    gap: 10px; /* Space between icons */
+    margin: 30px 0; /* Space above and below the row */
+    flex-wrap: wrap;
+}
+
+.payment-icons img {
+    height: 35px; /* Adjust the height of the icons */
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.payment-icons img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
