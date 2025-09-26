@@ -110,7 +110,7 @@ p {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: high-quality;
-    filter: contrast(1.1) saturation(1.2) brightness(0.9);
+    filter: contrast(1.1) saturation(1.2) brightness(0.9) blur(3px);
     will-change: transform, filter;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -180,52 +180,70 @@ p {
     position: relative;
     z-index: 3;
     text-align: center;
-    width: 90%;
-    max-width: clamp(350px, 90vw, 600px); /* Responsive max width */
-    padding: clamp(20px, 5vw, 40px) clamp(15px, 3vw, 25px); /* Responsive padding */
-    margin-top: clamp(300px, 50vh, 500px); /* Responsive margin */
+    width: 85%; /* Slightly more space for friendly feel */
+    max-width: clamp(300px, 65vw, 450px); /* Comfortable max width */
+    padding: clamp(20px, 5vw, 35px) clamp(20px, 4vw, 30px); /* More generous padding for friendly feel */
+    margin-top: clamp(250px, 40vh, 400px); /* Reduced margin for smaller block */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%); /* Subtle gradient for depth */
+    border-radius: 20px; /* More rounded for friendliness */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Subtle golden border */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4), /* Softer shadow */
+        0 0 60px rgba(255, 215, 0, 0.15); /* Gentle golden glow */
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5em, 5vw, 4em); /* Responsive font size */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    color: #FFD700;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: clamp(2.2em, 4.5vw, 3.5em);
+    margin-bottom: 25px;
+    text-shadow: 
+        0 0 12px rgba(255, 215, 0, 0.6), /* Softer golden glow for smooth readability */
+        2px 2px 5px rgba(0, 0, 0, 0.8); /* Clear but not excessive shadow */
+    color: #FFE55C;
+    font-weight: 500; /* Lighter weight for smoothness */
+    letter-spacing: 0.6px; /* More natural letter spacing */
+    line-height: 1.3;
 }
 
 .hero-content .subtitle {
-    font-size: clamp(1.1em, 2.5vw, 1.5em); /* Responsive font size */
-    margin-bottom: 40px;
-    color: #FFD700;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    font-size: clamp(1.1em, 2.5vw, 1.5em);
+    margin-bottom: 35px;
+    color: #FFE55C;
+    text-shadow: 
+        0 0 8px rgba(255, 215, 0, 0.5), /* Softer, more readable glow */
+        1px 1px 2px rgba(0, 0, 0, 0.7); /* Simple shadow for clarity */
+    font-weight: 400; /* Normal weight for smooth reading */
+    letter-spacing: 0.3px; /* Natural letter spacing */
+    line-height: 1.4;
 }
 
 .cta-button {
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%); /* Premium gold gradient */
+    background: linear-gradient(135deg, #FFE55C 0%, #FFB84D 50%, #FFE55C 100%); /* Warmer, friendlier gradient */
     color: #000;
-    padding: clamp(18px, 4vw, 28px) clamp(35px, 8vw, 50px); /* Bigger padding */
-    border: 2px solid #FFD700; /* Thinner, friendlier border */
-    border-radius: 25px; /* Larger rounded corners */
-    font-size: clamp(1.3em, 3vw, 1.8em); /* Bigger font size */
-    font-weight: 700; /* Bolder for bigger button */
+    padding: clamp(18px, 4vw, 26px) clamp(36px, 8vw, 52px); /* More generous padding for friendly feel */
+    border: 2px solid #FFB84D; /* Warmer border color */
+    border-radius: 28px; /* More rounded for friendliness */
+    font-size: clamp(1.3em, 3vw, 1.7em); /* Slightly larger for welcome feeling */
+    font-weight: 600; /* Slightly softer weight */
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slow, smooth transition */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother, friendlier transition */
     box-shadow: 
-        0 0 20px rgba(255, 215, 0, 0.8), /* Stronger glow for bigger button */
-        inset 0 2px 5px rgba(255, 255, 255, 0.3), /* More pronounced inner highlight */
-        0 5px 15px rgba(0, 0, 0, 0.3); /* Bigger drop shadow */
-    text-transform: none; /* Remove uppercase for friendlier look */
-    letter-spacing: 0.8px; /* More spacing for bigger text */
+        0 0 25px rgba(255, 215, 0, 0.9), /* Enhanced warm glow */
+        0 0 50px rgba(255, 165, 0, 0.6), /* Warmer orange glow */
+        inset 0 3px 8px rgba(255, 255, 255, 0.4), /* Brighter inner highlight */
+        0 6px 25px rgba(0, 0, 0, 0.4); /* Enhanced friendly shadow */
+    text-transform: none; /* Friendly, readable text */
+    letter-spacing: 1px; /* More generous spacing for warmth */
     font-family: 'Montserrat', sans-serif;
-    width: auto; /* Auto width instead of full width */
-    max-width: clamp(250px, 80vw, 400px); /* Much bigger max width */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Lighter text shadow */
+    width: auto;
+    max-width: clamp(240px, 75vw, 350px); /* Slightly larger for welcoming feel */
+    text-shadow: 
+        0 0 4px rgba(255, 255, 255, 0.8), /* Softer white glow */
+        1px 1px 2px rgba(0, 0, 0, 0.7); /* Simple definition */
     position: relative;
     overflow: hidden;
-    display: inline-block; /* Inline block for friendlier appearance */
-    text-align: center; /* Center align button text */
+    display: inline-block;
+    text-align: center;
+    filter: brightness(1.05); /* Minimal enhancement for smoothness */
 }
 
 /* Motion-friendly hover effects */
@@ -253,13 +271,19 @@ p {
 .cta-button:hover {
     background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%); /* Enhanced gradient on hover */
     border-color: #FFA500;
-    transform: translateY(-3px) scale(1.03); /* More fluid movement */
+    color: #000; /* Ensure text stays dark and clear */
+    transform: translateY(-5px) scale(1.05); /* More prominent hover effect */
     box-shadow: 
-        0 0 25px rgba(255, 215, 0, 0.9), /* Enhanced glow */
-        inset 0 1px 3px rgba(255, 255, 255, 0.4), /* Brighter inner highlight */
-        0 6px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow for floating effect */
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy transition */
+        0 0 40px rgba(255, 215, 0, 1.2), /* Much stronger glow on hover for clarity */
+        0 0 80px rgba(255, 165, 0, 0.8), /* Extended orange glow for friendliness */
+        inset 0 4px 12px rgba(255, 255, 255, 0.5), /* Brighter inner highlight */
+        0 12px 35px rgba(0, 0, 0, 0.5); /* Stronger shadow for better definition */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy, friendly transition */
     animation: shimmer 2s ease-in-out infinite, wiggle 0.8s ease-in-out infinite;
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 1.2), /* Even stronger white glow on hover */
+        3px 3px 6px rgba(0, 0, 0, 1); /* Extra strong black shadow for text clarity */
+    filter: contrast(1.2) brightness(1.1); /* Enhanced clarity on interaction */
 }
 
 /* Motion-friendly pulse effect for CTA button */
@@ -501,16 +525,17 @@ p {
 
 /* Money animation highlight */
 .dollar-highlight {
-    font-size: clamp(2em, 5vw, 2.5em);
-    font-weight: bold;
-    color: #fff !important;
+    font-size: clamp(2em, 5vw, 2.8em);
+    font-weight: 600; /* Softer weight for smooth readability */
+    color: #FFE55C !important;
     text-shadow: 
-        0 0 10px rgba(255, 215, 0, 1),
-        0 0 20px rgba(255, 215, 0, 0.8),
-        0 0 30px rgba(255, 215, 0, 0.6);
+        0 0 10px rgba(255, 215, 0, 0.7), /* Softer golden glow */
+        1px 1px 3px rgba(0, 0, 0, 0.8); /* Simple clear definition */
     position: relative;
     display: inline-block;
-    animation: moneyBounce 2s ease-in-out infinite, moneyGlow 1.5s ease-in-out infinite;
+    animation: none; /* Remove heavy animations for smooth text */
+    filter: brightness(1.1); /* Minimal enhancement for smoothness */
+    text-transform: none;
 }
 
 /* Money bounce animation */
@@ -562,19 +587,19 @@ p {
 /* Khmer text styling with Koulen font */
 .khmer-text {
     font-family: 'Koulen', cursive, sans-serif;
-    font-size: 0.85em;
-    font-weight: 400;
-    color: #FFD700;
+    font-size: clamp(0.95em, 2.4vw, 1.15em);
+    font-weight: 500; /* Normal weight for smooth readability */
+    color: #FFE55C;
     display: inline-block;
     position: relative;
-    text-align: center; /* Ensure center alignment for Khmer text */
+    text-align: center;
     text-shadow: 
-        0 0 8px rgba(255, 215, 0, 0.8),
-        0 0 16px rgba(255, 215, 0, 0.6),
-        1px 1px 3px rgba(0, 0, 0, 0.7);
-    animation: khmerFloat 4s ease-in-out infinite;
-    line-height: 1.4;
-    letter-spacing: 1px;
+        0 0 8px rgba(255, 215, 0, 0.6), /* Softer golden glow */
+        1px 1px 2px rgba(0, 0, 0, 0.7); /* Simple clear shadow */
+    animation: none; /* Remove animation for smooth, stable text */
+    line-height: 1.4; /* Comfortable spacing */
+    letter-spacing: 0.8px; /* Good spacing */
+    filter: brightness(1.05); /* Subtle enhancement only */
 }
 
 /* Khmer text friendly floating animation */
@@ -949,15 +974,17 @@ p {
     }
     
     .hero-content {
-        width: 95%;
-        margin-top: clamp(250px, 45vh, 400px);
-        padding: clamp(15px, 4vw, 25px) clamp(10px, 3vw, 20px);
+        width: 90%; /* More accessible width for mobile */
+        max-width: clamp(280px, 65vw, 400px); /* Slightly wider for friendly feel */
+        margin-top: clamp(220px, 40vh, 350px); /* Reduced margin for mobile */
+        padding: clamp(15px, 4vw, 22px) clamp(16px, 3vw, 20px); /* Generous mobile padding */
+        border-radius: 18px; /* Slightly more rounded for mobile friendliness */
     }
     
     .cta-button {
-        padding: clamp(16px, 4.5vw, 25px) clamp(30px, 8vw, 45px);
-        font-size: clamp(1.2em, 3.5vw, 1.6em);
-        max-width: 95%;
+        padding: clamp(14px, 3.8vw, 20px) clamp(28px, 7vw, 38px);
+        font-size: clamp(1.05em, 3vw, 1.35em);
+        max-width: 90%;
         text-align: center; /* Ensure center alignment on mobile */
     }
     
@@ -1086,7 +1113,7 @@ p {
     
     .hero-image img {
         image-rendering: auto;
-        filter: contrast(1.05) saturation(1.1) brightness(0.95);
+        filter: contrast(1.05) saturation(1.1) brightness(0.95) blur(3px);
         animation: heroZoom 8s ease-in-out infinite;
     }
     
@@ -1175,8 +1202,8 @@ p {
     }
     
     .cta-button {
-        padding: clamp(14px, 3.5vw, 20px) clamp(25px, 6vw, 35px);
-        font-size: clamp(1em, 2.8vw, 1.3em);
+        padding: clamp(12px, 3.2vw, 18px) clamp(22px, 5.5vw, 32px);
+        font-size: clamp(0.9em, 2.5vw, 1.1em);
         text-align: center; /* Center align for very small mobile screens */
     }
     
@@ -1199,7 +1226,7 @@ p {
 /* High-quality tablet adjustments */
 @media (min-width: 481px) and (max-width: 768px) {
     .hero-image img {
-        filter: contrast(1.1) saturation(1.15) brightness(0.9);
+        filter: contrast(1.1) saturation(1.15) brightness(0.9) blur(3px);
     }
 }
 
@@ -1212,7 +1239,7 @@ p {
     
     .hero-image img {
         image-rendering: high-quality;
-        filter: contrast(1.12) saturation(1.25) brightness(0.88);
+        filter: contrast(1.12) saturation(1.25) brightness(0.88) blur(3px);
     }
 }
 
