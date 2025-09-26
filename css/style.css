@@ -47,6 +47,24 @@ p {
 .logo img {
     max-width: clamp(100px, 25vw, 150px); /* Responsive logo size */
     height: auto;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* Logo floating animation */
+@keyframes logoFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+    }
+    50% { 
+        transform: translateY(-2px) scale(1.02); 
+    }
+}
+
+/* Logo hover animation */
+.logo img:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.4));
 }
 
 .tagline p {
@@ -77,13 +95,61 @@ p {
     width: 100%;
     height: 100%;
     z-index: 1;
+    overflow: hidden;
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8;
+    opacity: 0.9;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: heroZoom 10s ease-in-out infinite, imageParallax 15s ease-in-out infinite;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: high-quality;
+    filter: contrast(1.1) saturation(1.2) brightness(0.9);
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Enhanced hero background zoom animation */
+@keyframes heroZoom {
+    0%, 100% { 
+        transform: scale(1);
+        filter: contrast(1.1) saturation(1.2) brightness(0.9) hue-rotate(0deg) blur(0px);
+    }
+    25% { 
+        transform: scale(1.02);
+        filter: contrast(1.15) saturation(1.3) brightness(1.05) hue-rotate(5deg) blur(0.5px);
+    }
+    50% { 
+        transform: scale(1.05);
+        filter: contrast(1.2) saturation(1.4) brightness(1.1) hue-rotate(0deg) blur(0px);
+    }
+    75% { 
+        transform: scale(1.02);
+        filter: contrast(1.15) saturation(1.3) brightness(1.05) hue-rotate(-5deg) blur(0.5px);
+    }
+}
+
+/* Parallax subtle movement animation */
+@keyframes imageParallax {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+    }
+    25% { 
+        transform: scale(1.01) rotate(0.2deg);
+    }
+    50% { 
+        transform: scale(1.02) rotate(0.1deg);
+    }
+    75% { 
+        transform: scale(1.01) rotate(-0.2deg);
+    }
 }
 
 .hero-image::after {
@@ -95,6 +161,19 @@ p {
     height: clamp(150px, 25vh, 250px); /* Responsive height */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(255, 215, 0, 0.1) 30%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
     z-index: 2;
+    animation: overlayShimmer 8s ease-in-out infinite;
+}
+
+/* Dynamic overlay shimmer effect */
+@keyframes overlayShimmer {
+    0%, 100% { 
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(255, 215, 0, 0.1) 30%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    }
+    50% { 
+        opacity: 0.95;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(255, 215, 0, 0.15) 30%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    }
 }
 
 .hero-content {
@@ -126,63 +205,446 @@ p {
 .cta-button {
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%); /* Premium gold gradient */
     color: #000;
-    padding: clamp(12px, 2.5vw, 18px) clamp(25px, 5vw, 35px); /* Smaller, friendlier padding */
+    padding: clamp(18px, 4vw, 28px) clamp(35px, 8vw, 50px); /* Bigger padding */
     border: 2px solid #FFD700; /* Thinner, friendlier border */
-    border-radius: 20px; /* More rounded, friendlier corners */
-    font-size: clamp(1em, 2vw, 1.2em); /* Smaller, friendlier font size */
-    font-weight: 600; /* Less bold, more friendly */
+    border-radius: 25px; /* Larger rounded corners */
+    font-size: clamp(1.3em, 3vw, 1.8em); /* Bigger font size */
+    font-weight: 700; /* Bolder for bigger button */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slow, smooth transition */
     box-shadow: 
-        0 0 15px rgba(255, 215, 0, 0.6), /* Softer glow */
-        inset 0 1px 3px rgba(255, 255, 255, 0.2), /* Subtle inner highlight */
-        0 3px 10px rgba(0, 0, 0, 0.2); /* Lighter drop shadow */
+        0 0 20px rgba(255, 215, 0, 0.8), /* Stronger glow for bigger button */
+        inset 0 2px 5px rgba(255, 255, 255, 0.3), /* More pronounced inner highlight */
+        0 5px 15px rgba(0, 0, 0, 0.3); /* Bigger drop shadow */
     text-transform: none; /* Remove uppercase for friendlier look */
-    letter-spacing: 0.5px; /* Less spacing for friendlier feel */
+    letter-spacing: 0.8px; /* More spacing for bigger text */
     font-family: 'Montserrat', sans-serif;
     width: auto; /* Auto width instead of full width */
-    max-width: clamp(200px, 60vw, 280px); /* Smaller max width */
+    max-width: clamp(250px, 80vw, 400px); /* Much bigger max width */
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Lighter text shadow */
     position: relative;
     overflow: hidden;
     display: inline-block; /* Inline block for friendlier appearance */
+    text-align: center; /* Center align button text */
+}
+
+/* Motion-friendly hover effects */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:active {
+    transform: translateY(1px) scale(0.98);
+    transition: all 0.1s ease;
+    animation: scaleBounce 0.3s ease-in-out;
 }
 
 .cta-button:hover {
     background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%); /* Enhanced gradient on hover */
     border-color: #FFA500;
-    transform: translateY(-2px) scale(1.01); /* Gentler, friendlier hover effect */
+    transform: translateY(-3px) scale(1.03); /* More fluid movement */
     box-shadow: 
-        0 0 20px rgba(255, 215, 0, 0.8), /* Softer glow */
-        inset 0 1px 3px rgba(255, 255, 255, 0.3), /* Subtle inner highlight */
-        0 4px 12px rgba(0, 0, 0, 0.3); /* Lighter drop shadow */
+        0 0 25px rgba(255, 215, 0, 0.9), /* Enhanced glow */
+        inset 0 1px 3px rgba(255, 255, 255, 0.4), /* Brighter inner highlight */
+        0 6px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow for floating effect */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy transition */
+    animation: shimmer 2s ease-in-out infinite, wiggle 0.8s ease-in-out infinite;
 }
 
-/* Pulse effect for CTA button */
+/* Motion-friendly pulse effect for CTA button */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); } /* Gentler pulse */
-    100% { transform: scale(1); }
+    0% { 
+        transform: scale(1);
+        box-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.6),
+            0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        transform: scale(1.025);
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.8),
+            0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.6),
+            0 3px 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .pulse-effect {
-    animation: pulse 3s infinite; /* Slower, more friendly pulse */
+    animation: pulse 2.5s ease-in-out infinite; /* Smoother timing function */
 }
+
+/* Enhanced button entrance animation */
+.cta-button.animate-entrance {
+    animation: float 3s ease-in-out infinite, bounceIn 1s ease-out;
+}
+
+/* Special wiggle animation for special moments */
+.cta-button.wiggle-animation {
+    animation: wiggle 0.6s ease-in-out !important;
+}
+
+/* Special glow animation for excitement */
+.cta-button.glow-animation {
+    animation: smoothGlow 1s ease-in-out !important;
+}
+
+/* Rotate animation for attention */
+.cta-button.rotate-animation {
+    animation: gentleRotation 2s ease-in-out infinite !important;
+}
+
+/* Scale bounce animation for clicks */
+.cta-button.scale-bounce {
+    animation: scaleBounce 0.3s ease-in-out !important;
+}
+
+/* Gradient wave animation */
+@keyframes gradientWave {
+    0% {
+        background-position: 0% 50%;
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    }
+    25% {
+        background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%);
+    }
+    50% {
+        background: linear-gradient(135deg, #FFD700 0%, #FFFF00 50%, #FFD700 100%);
+    }
+    75% {
+        background: linear-gradient(135deg, #FFFF00 0%, #FFA500 50%, #FFFF00 100%);
+    }
+    100% {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    }
+}
+
+.cta-button.wave-animation {
+    animation: gradientWave 3s ease-in-out infinite !important;
+}
+
+/* Twirling effect */
+@keyframes twirl {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.cta-button.twirl-animation {
+    animation: twirl 2s ease-in-out !important;
+}
+
+/* Quick zoom in zoom out animation */
+@keyframes zoomInOut {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    50% { transform: scale(0.85); }
+    75% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.cta-button.zoom-animation {
+    animation: zoomInOut 0.8s ease-in-out !important;
+    animation-iteration-count: 1;
+}
+
+/* Additional motion-friendly animation */
+@keyframes smoothGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 15px rgba(255, 215, 0, 0.6),
+            inset 0 1px 3px rgba(255, 255, 255, 0.2),
+            0 3px 10px rgba(0, 0, 0, 0.2); 
+    }
+    50% { 
+        box-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.8),
+            inset 0 1px 3px rgba(255, 255, 255, 0.3),
+            0 4px 12px rgba(0, 0, 0, 0.3); 
+    }
+}
+
+/* Bouncy entrance animation */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Wiggling animation for call-to-action */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(-2deg); }
+    20% { transform: rotate(2deg); }
+    30% { transform: rotate(-1deg); }
+    40% { transform: rotate(1deg); }
+    50% { transform: rotate(-0.5deg); }
+    60% { transform: rotate(0.5deg); }
+}
+
+/* Floating animation for continuous movement */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Shimmer effect with color change */
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    }
+    20% {
+        background: linear-gradient(135deg, #FFA500 0%, #FFD700 50%, #FFA500 100%);
+    }
+    40% {
+        background: linear-gradient(135deg, #FFD700 0%, #FFFF00 50%, #FFD700 100%);
+    }
+    60% {
+        background: linear-gradient(135deg, #FFFF00 0%, #FFD700 50%, #FFFF00 100%);
+    }
+    80% {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    }
+    100% {
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+    }
+}
+
+/* Gentle rotation animation */
+@keyframes gentleRotation {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Scale bounce animation for interactions */
+@keyframes scaleBounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.05); }
+    50% { transform: scale(1.1); }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 
 /* Promotion Banner */
 .promotion-banner {
-    background-color: #333;
+    background: linear-gradient(135deg, #333 0%, #444 50%, #333 100%);
     padding: 20px;
     text-align: center;
     border-top: 2px solid #FFD700;
     border-bottom: 2px solid #FFD700;
     margin: 20px 0;
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.3),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.promotion-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    animation: shimmerBackground 3s ease-in-out infinite;
+}
+
+@keyframes shimmerBackground {
+    0% { left: -100%; }
+    50% { left: 0%; }
+    100% { left: 100%; }
 }
 
 .promotion-banner h2 {
     font-size: 1.8em;
     margin-bottom: 10px;
     color: #FFD700;
+}
+
+/* Money animation highlight */
+.dollar-highlight {
+    font-size: clamp(2em, 5vw, 2.5em);
+    font-weight: bold;
+    color: #fff !important;
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 1),
+        0 0 20px rgba(255, 215, 0, 0.8),
+        0 0 30px rgba(255, 215, 0, 0.6);
+    position: relative;
+    display: inline-block;
+    animation: moneyBounce 2s ease-in-out infinite, moneyGlow 1.5s ease-in-out infinite;
+}
+
+/* Money bounce animation */
+@keyframes moneyBounce {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+    }
+    25% { 
+        transform: scale(1.1) rotate(2deg); 
+    }
+    50% { 
+        transform: scale(1.05) rotate(-1deg); 
+    }
+    75% { 
+        transform: scale(1.08) rotate(1deg); 
+    }
+}
+
+/* Money glow animation */
+@keyframes moneyGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px rgba(255, 215, 0, 1),
+            0 0 20px rgba(255, 215, 0, 0.8),
+            0 0 30px rgba(255, 215, 0, 0.6);
+    }
+    50% { 
+        text-shadow: 
+            0 0 20px rgba(255, 255, 0, 1),
+            0 0 30px rgba(255, 255, 0, 0.9),
+            0 0 40px rgba(255, 255, 0, 0.7);
+    }
+}
+
+/* Enhanced money animation for the banner */
+.money-animation {
+    animation: moneyFloat 3s ease-in-out infinite;
+}
+
+@keyframes moneyFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-3px);
+    }
+}
+
+/* Khmer text styling with Koulen font */
+.khmer-text {
+    font-family: 'Koulen', cursive, sans-serif;
+    font-size: 0.85em;
+    font-weight: 400;
+    color: #FFD700;
+    display: inline-block;
+    position: relative;
+    text-align: center; /* Ensure center alignment for Khmer text */
+    text-shadow: 
+        0 0 8px rgba(255, 215, 0, 0.8),
+        0 0 16px rgba(255, 215, 0, 0.6),
+        1px 1px 3px rgba(0, 0, 0, 0.7);
+    animation: khmerFloat 4s ease-in-out infinite;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}
+
+/* Khmer text friendly floating animation */
+@keyframes khmerFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+        text-shadow: 
+            0 0 8px rgba(255, 215, 0, 0.8),
+            0 0 16px rgba(255, 215, 0, 0.6),
+            1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    50% { 
+        transform: translateY(-2px) scale(1.02);
+        text-shadow: 
+            0 0 12px rgba(255, 215, 0, 0.9),
+            0 0 20px rgba(255, 215, 0, 0.7),
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Friendly hover effects for Khmer text */
+.khmer-text:hover {
+    color: #FFFF80;
+    animation: khmerBounce 0.6s ease-in-out;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 128, 0.9),
+        0 0 25px rgba(255, 255, 128, 0.7),
+        2px 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Friendly bounce animation for hover */
+@keyframes khmerBounce {
+    0% { transform: translateY(0px) scale(1); }
+    30% { transform: translateY(-3px) scale(1.05); }
+    60% { transform: translateY(-1px) scale(1.02); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+/* Dollar sparkle effect */
+.dollar-highlight::before {
+    content: '$';
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    font-size: 0.8em;
+    color: #FFD700;
+    animation: sparkle 2s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.dollar-highlight::after {
+    content: '$';
+    position: absolute;
+    top: -10px;
+    right: -20px;
+    font-size: 0.8em;
+    color: #FFD700;
+    animation: sparkle 2s ease-in-out infinite 1s;
+    opacity: 0.7;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
 }
 
 .promotion-banner p {
@@ -199,6 +661,7 @@ p {
 .game-categories h2 {
     font-size: clamp(1.8em, 4vw, 2.5em); /* Responsive font size */
     margin-bottom: clamp(15px, 3vw, 25px);
+    text-align: center; /* Ensure center alignment explicitly */
 }
 
 .category-grid {
@@ -212,65 +675,110 @@ p {
 }
 
 .game-card {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); /* Premium dark gradient */
-    border-radius: 12px; /* More rounded corners */
-    padding: 10px; /* Slightly more padding */
+    background: #1a1a1a; /* Solid dark background as shown in reference */
+    border-radius: 15px; 
+    padding: 15px; /* More padding for better spacing */
     text-align: center;
     box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.6), /* Deeper shadow */
-        0 0 20px rgba(255, 215, 0, 0.2); /* Subtle golden glow */
-    transition: all 0.3s ease;
-    border: 2px solid #FFD700; /* Thick golden border */
-    height: 110px; /* Fixed height to fit 2 rows clearly */
+        0 4px 20px rgba(0, 0, 0, 0.9), /* Deep shadow for card separation */
+        0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    border: 3px solid #FFD700; /* Prominent golden border */
+    height: clamp(130px, 28vw, 150px); /* Taller for better proportional layout */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; 
+    align-items: center;
     width: 100%;
     box-sizing: border-box;
     position: relative;
+    text-decoration: none;
+    color: inherit;
     overflow: hidden;
+    cursor: pointer;
+    min-height: 130px; /* Ensure minimum touch target */
 }
 
 .game-card:hover {
-    transform: translateY(-8px) scale(1.02); /* Enhanced lift and scale */
+    transform: translateY(-8px) scale(1.02); /* Subtle lift */
     box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.8), /* Deeper shadow */
-        0 0 30px rgba(255, 215, 0, 0.6), /* Stronger golden glow */
-        inset 0 1px 3px rgba(255, 215, 0, 0.2); /* Inner golden highlight */
-    border-color: #FFA500; /* Brighter border on hover */
+        0 8px 25px rgba(0, 0, 0, 0.9), /* Deeper shadow */
+        0 0 20px rgba(255, 215, 0, 0.6); /* Golden glow */
+    border-color: #FFD700; /* Maintain golden border */
+    text-decoration: none;
+    color: inherit;
+    background: #1a1a1a; /* Keep dark background */
+}
+
+/* Active state for touch interactions */
+.game-card:active {
+    transform: translateY(-4px) scale(0.98);
+    transition: all 0.1s ease;
+    background: #222222; /* Slightly lighter background on press */
 }
 
 .game-card img {
-    width: 100%; /* Full width of the card */
-    height: 60px; /* Fixed height to maintain aspect ratio */
-    object-fit: cover; /* Cover the full area */
-    margin-bottom: 6px; /* Slightly more margin */
-    border-radius: 8px; /* More rounded */
-    border: 2px solid #FFD700; /* Thicker golden border */
+    width: 80%; /* Take up less width for more centered look */
+    height: clamp(60px, 15vw, 80px); /* Larger height for prominent display */
+    object-fit: contain; /* Show complete image */
+    margin-bottom: 12px; /* More spacing between icon and text */
+    border-radius: 8px; /* Slightly rounded */
     align-self: center;
     box-shadow: 
-        0 0 10px rgba(255, 215, 0, 0.4), /* Golden glow around image */
-        0 2px 8px rgba(0, 0, 0, 0.3); /* Drop shadow */
-    transition: all 0.3s ease;
+        0 0 10px rgba(255, 215, 0, 0.4), /* Subtle golden glow */
+        0 2px 6px rgba(0, 0, 0, 0.6); /* Strong drop shadow for depth */
+    transition: all 0.4s ease;
+    animation: gameImageFloat 5s ease-in-out infinite;
+    background: transparent; /* No background behind image */
 }
 
+/* Game card image floating animation */
+@keyframes gameImageFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+    }
+    50% { 
+        transform: translateY(-1px) scale(1.02); 
+    }
+}
+
+/* Staggered animation delays for game card images */
+.game-card:nth-child(1) img { animation-delay: 0s; }
+.game-card:nth-child(2) img { animation-delay: 0.5s; }
+.game-card:nth-child(3) img { animation-delay: 1s; }
+.game-card:nth-child(4) img { animation-delay: 1.5s; }
+.game-card:nth-child(5) img { animation-delay: 2s; }
+.game-card:nth-child(6) img { animation-delay: 2.5s; }
+
 .game-card h3 {
-    font-size: 0.8em; /* Fixed smaller font size */
-    margin-bottom: 2px;
-    color: #FFD700;
-    line-height: 1.1;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for depth */
+    font-size: clamp(1em, 4vw, 1.1em); /* Larger, more prominent sizing */
+    margin-bottom: 0; /* Tight spacing */
+    color: #ffffff; /* White text as shown in reference */
+    line-height: 1.3;
+    font-weight: 600; /* Medium weight as shown */
+    text-shadow: 
+        0 0 6px rgba(0, 0, 0, 0.8), /* Dark shadow for contrast */
+        1px 1px 2px rgba(0, 0, 0, 0.9); /* Depth shadow */
     transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    text-align: center; /* Ensure center alignment */
 }
 
 .game-card p {
-    font-size: 0.65em; /* Fixed smaller font size */
-    color: #fff; /* Brighter white text */
-    margin: 0;
-    line-height: 1.2;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
-    transition: all 0.3s ease;
+    display: none; /* Hide description text to match reference layout */
+    position: absolute;
+    opacity: 0;
+}
+
+/* Styling for any additional text elements that appear on cards */
+.game-card span {
+    color: #ffffff;
+    font-size: clamp(0.9em, 3.5vw, 1em);
+    text-align: center;
+    font-weight: 500;
+    text-shadow: 
+        0 0 4px rgba(0, 0, 0, 0.8),
+        1px 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 /* Trust and Security Section */
@@ -305,6 +813,47 @@ p {
     max-width: 70px;
     height: auto;
     filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: securityFloat 5s ease-in-out infinite;
+}
+
+/* Security icons floating animation */
+@keyframes securityFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    }
+    50% { 
+        transform: translateY(-2px) rotate(1deg);
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    }
+}
+
+/* General image shimmer effect */
+@keyframes imageShimmer {
+    0%, 100% { 
+        opacity: 1;
+    }
+    50% { 
+        opacity: 0.9;
+        filter: brightness(1.1) contrast(1.05);
+    }
+}
+
+/* Add shimmer to all images occasionally */
+.game-card img:hover {
+    animation: imageShimmer 0.6s ease-in-out;
+}
+
+/* Staggered animation delays for security icons */
+.security-icons img:nth-child(1) { animation-delay: 0s; }
+.security-icons img:nth-child(2) { animation-delay: 1.5s; }
+.security-icons img:nth-child(3) { animation-delay: 3s; }
+
+/* Security icons hover animation */
+.security-icons img:hover {
+    transform: translateY(-5px) scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.9));
 }
 
 /* Call to Action Footer */
@@ -347,12 +896,311 @@ p {
     height: 25px;
     margin: 0 8px;
     filter: grayscale(100%) brightness(0.7) invert(0.8) sepia(1) saturate(5) hue-rotate(15deg); /* To make goldish */
-    transition: transform 0.2s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: socialFloat 6s ease-in-out infinite;
 }
 
+/* Social media icons floating animation */
+@keyframes socialFloat {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-2px);
+    }
+}
+
+/* Staggered animation delays for social media icons */
+.social-media a:nth-child(1) img { animation-delay: 0s; }
+.social-media a:nth-child(2) img { animation-delay: 2s; }
+.social-media a:nth-child(3) img { animation-delay: 4s; }
+
 .social-media a img:hover {
-    transform: scale(1.1);
-    filter: none; /* Remove filter on hover to show original gold if any */
+    transform: translateY(-8px) scale(1.2) rotate(5deg);
+    filter: none; /* Remove filter on hover to show original color */
+    filter: drop-shadow(0 5px 10px rgba(255, 215, 0, 0.6));
+}
+
+/* Mobile Responsive Enhancement */
+@media (max-width: 480px) {
+    .landing-page {
+        width: 100vw;
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .header {
+        padding: clamp(12px, 3vw, 18px) clamp(10px, 3vw, 20px);
+        min-height: clamp(50px, 10vw, 65px);
+    }
+    
+    .logo img {
+        max-width: clamp(80px, 20vw, 120px);
+    }
+    
+    .tagline p {
+        font-size: clamp(0.8em, 2.5vw, 1.1em);
+    }
+    
+    .hero-section {
+        min-height: clamp(400px, 80vh, 600px);
+    }
+    
+    .hero-content {
+        width: 95%;
+        margin-top: clamp(250px, 45vh, 400px);
+        padding: clamp(15px, 4vw, 25px) clamp(10px, 3vw, 20px);
+    }
+    
+    .cta-button {
+        padding: clamp(16px, 4.5vw, 25px) clamp(30px, 8vw, 45px);
+        font-size: clamp(1.2em, 3.5vw, 1.6em);
+        max-width: 95%;
+        text-align: center; /* Ensure center alignment on mobile */
+    }
+    
+    .promotion-banner {
+        padding: clamp(15px, 4vw, 20px);
+    }
+    
+    .promotion-banner h2 {
+        font-size: clamp(1.3em, 4vw, 1.6em);
+        line-height: 1.4;
+    }
+    
+    .khmer-text {
+        font-size: 0.8em;
+        line-height: 1.3;
+        letter-spacing: 0.8px;
+        animation: khmerFloat 4.5s ease-in-out infinite;
+    }
+    
+    .dollar-highlight {
+        font-size: clamp(1.8em, 6vw, 2.2em);
+    }
+    
+    .game-categories {
+        padding: clamp(15px, 4vw, 25px) clamp(8px, 3vw, 15px);
+    }
+    
+    .game-categories h2 {
+        font-size: clamp(1.5em, 4vw, 2em);
+        margin-bottom: clamp(10px, 3vw, 20px);
+        text-align: center; /* Ensure center alignment on mobile */
+    }
+    
+    .khmer-text {
+        text-align: center; /* Center align Khmer text specifically */
+        display: block; /* Make it a block element for better centering */
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(8px, 2.5vw, 12px); /* More space between cards */
+        padding: 0 clamp(8px, 2vw, 15px); /* Side padding for spacing */
+    }
+    
+    .game-card {
+        height: clamp(120px, 25vw, 140px);
+        padding: clamp(12px, 3vw, 18px);
+        min-height: 120px; /* Larger minimum touch target */
+        border-radius: 15px; /* Consistent with reference */
+        background: #1a1a1a;
+        border: 3px solid #FFD700;
+    }
+    
+    .game-card img {
+        height: clamp(65px, 14vw, 75px);
+        width: 75%; /* Centered narrower width */
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background: transparent;
+    }
+    
+    .game-card h3 {
+        font-size: clamp(1em, 4vw, 1.1em);
+        margin-bottom: 0;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-align: center;
+    }
+    
+    .game-card p {
+        display: none; /* Hide description text consistently */
+    }
+    
+    /* Ensure better mobile touch targets */
+    .category-grid .game-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Enhanced mobile hover states */
+    .game-card:active {
+        transform: translateY(-2px) scale(0.96);
+        background: linear-gradient(135deg, #4a4a4a 0%, #5a5a5a 50%, #4a4a4a 100%);
+    }
+    
+    .trust-security {
+        padding: clamp(20px, 5vw, 30px) clamp(12px, 3vw, 15px);
+    }
+    
+    .trust-security h2 {
+        font-size: clamp(1.4em, 4vw, 1.8em);
+        margin-bottom: clamp(8px, 2vw, 12px);
+    }
+    
+    .security-icons {
+        gap: clamp(10px, 3vw, 20px);
+        margin: clamp(15px, 4vw, 25px) 0;
+    }
+    
+    .security-icons img {
+        max-width: clamp(50px, 12vw, 70px);
+    }
+    
+    .cta-footer {
+        padding: clamp(30px, 6vw, 40px) clamp(15px, 4vw, 20px);
+    }
+    
+    .cta-footer h2 {
+        font-size: clamp(1.6em, 4.5vw, 2.2em);
+    }
+    
+    .footer {
+        padding: clamp(15px, 4vw, 20px);
+    }
+    
+    .footer p {
+        font-size: clamp(0.8em, 2.5vw, 0.9em);
+        margin-bottom: 8px;
+    }
+    
+    .social-media a img {
+        width: clamp(20px, 6vw, 25px);
+        height: clamp(20px, 6vw, 25px);
+        margin: 0 clamp(4px, 1.5vw, 8px);
+    }
+    
+    .hero-image img {
+        image-rendering: auto;
+        filter: contrast(1.05) saturation(1.1) brightness(0.95);
+        animation: heroZoom 8s ease-in-out infinite;
+    }
+    
+    /* Optimize touch interactions on mobile */
+    .cta-button {
+        touch-action: manipulation;
+        min-height: 44px; /* iOS tap target size */
+        text-align: center; /* Ensure center alignment for touch optimization */
+    }
+    
+    .game-card {
+        touch-action: manipulation;
+        min-height: 90px; /* Ensure tap targets are large enough */
+    }
+    
+    /* Reduce animations on mobile for better performance */
+    .game-card img {
+        animation: gameImageFloat 6s ease-in-out infinite; /* Slower on mobile */
+    }
+    
+    .security-icons img {
+        animation: securityFloat 7s ease-in-out infinite; /* Slower on mobile */
+    }
+    
+    .social-media a img {
+        animation: socialFloat 8s ease-in-out infinite; /* Slower on mobile */
+    }
+    
+    /* Optimize text rendering for mobile */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeSpeed;
+    }
+    
+    /* Limit animations for battery savings */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+}
+
+/* Small mobile devices (320px - 375px) */
+@media (max-width: 375px) {
+    .landing-page {
+        width: 100vw;
+        border-radius: 0;
+    }
+    
+    .category-grid {
+        gap: 3px;
+    }
+    
+    .game-card {
+        height: clamp(110px, 22vw, 125px);
+        padding: 10px;
+        min-height: 110px;
+        background: #1a1a1a;
+        border: 2px solid #FFD700;
+        border-radius: 12px;
+    }
+    
+    .game-card img {
+        height: clamp(55px, 12vw, 65px);
+        width: 75%;
+        margin-bottom: 8px;
+    }
+    
+    .game-card h3 {
+        font-size: clamp(0.9em, 3.5vw, 1em);
+        margin-bottom: 0;
+        color: #ffffff;
+        font-weight: 600;
+    }
+    
+    .game-card p {
+        display: none; /* Hide descriptions on small mobile */
+    }
+    
+    .category-grid {
+        gap: 6px;
+        padding: 0 10px;
+    }
+    
+    .cta-button {
+        padding: clamp(14px, 3.5vw, 20px) clamp(25px, 6vw, 35px);
+        font-size: clamp(1em, 2.8vw, 1.3em);
+        text-align: center; /* Center align for very small mobile screens */
+    }
+    
+    .promotion-banner h2 {
+        font-size: 1.2em;
+    }
+    
+    .khmer-text {
+        font-size: 0.75em;
+    }
+}
+
+@media (min-width: 481px) {
+    .khmer-text {
+        font-size: 0.9em;
+        animation: khmerFloat 3.5s ease-in-out infinite;
+    }
+}
+
+/* High-quality tablet adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero-image img {
+        filter: contrast(1.1) saturation(1.15) brightness(0.9);
+    }
 }
 
 /* Responsive Adjustments */
@@ -360,6 +1208,11 @@ p {
     .landing-page {
         width: 430px; /* Keep iPhone 14 Pro Max width */
         max-width: 430px;
+    }
+    
+    .hero-image img {
+        image-rendering: high-quality;
+        filter: contrast(1.12) saturation(1.25) brightness(0.88);
     }
 }
 
