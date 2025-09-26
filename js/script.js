@@ -100,4 +100,5 @@ $(document).ready(function() {
             }
         }, 5000); // Every 5 seconds (more frequent)
     });
-});
+
+}); // End of jQuery document ready

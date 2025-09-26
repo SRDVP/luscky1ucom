@@ -827,11 +827,43 @@ p {
     margin-bottom: 20px;
 }
 
-.security-icons {
+/* Auto Slideshow Row */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.auto-slide-row {
     display: flex;
-    justify-content: center;
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
+    padding: 20px 0;
+    animation: infiniteScroll 20s linear infinite;
+    width: max-content;
+}
+
+.auto-slide-row img {
+    max-width: 70px;
+    height: auto;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: securityFloat 5s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+/* Infinite scroll animation */
+@keyframes infiniteScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Simple hover effects for logos */
+.auto-slide-row img:hover {
+    transform: translateY(-5px) scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.9));
 }
 
 .security-icons img {
@@ -1079,13 +1111,19 @@ p {
         margin-bottom: clamp(8px, 2vw, 12px);
     }
     
-    .security-icons {
-        gap: clamp(10px, 3vw, 20px);
+    .carousel-container {
         margin: clamp(15px, 4vw, 25px) 0;
     }
     
-    .security-icons img {
-        max-width: clamp(50px, 12vw, 70px);
+    .auto-slide-row {
+        gap: clamp(8px, 2vw, 20px); /* Tighter gap for mobile */
+        padding: 15px 0; /* Reduced padding on mobile */
+        animation: infiniteScroll 25s linear infinite; /* Slightly slower on mobile */
+    }
+    
+    .auto-slide-row img {
+        max-width: clamp(45px, 10vw, 70px); /* Smaller for mobile fit */
+        flex-shrink: 0; /* Prevent images from shrinking */
     }
     
     .cta-footer {
@@ -1134,7 +1172,7 @@ p {
         animation: gameImageFloat 6s ease-in-out infinite; /* Slower on mobile */
     }
     
-    .security-icons img {
+    .slide img {
         animation: securityFloat 7s ease-in-out infinite; /* Slower on mobile */
     }
     
@@ -1199,6 +1237,19 @@ p {
     .category-grid {
         gap: 6px;
         padding: 0 10px;
+    }
+    
+    .carousel-container {
+        padding: 0 5px; /* Minimal padding for very small screens */
+    }
+    
+    .auto-slide-row {
+        gap: clamp(5px, 1.5vw, 15px); /* Even tighter gap for very small screens */
+        animation: infiniteScroll 30s linear infinite; /* Slower on very small screens */
+    }
+    
+    .auto-slide-row img {
+        max-width: clamp(40px, 8vw, 70px); /* Smaller for very small screens */
     }
     
     .cta-button {
