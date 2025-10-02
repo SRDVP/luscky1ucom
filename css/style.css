@@ -572,7 +572,11 @@ p {
 
 /* Enhanced money animation for the banner */
 .money-animation {
-    animation: moneyFloat 3s ease-in-out infinite;
+     animation: moneyGlow 2s ease-in-out infinite, moneyBounce 3s ease-in-out infinite;
+    display: inline-block;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #FFD700;
 }
 
 @keyframes moneyFloat {

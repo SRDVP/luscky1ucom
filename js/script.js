@@ -36,8 +36,7 @@ $(document).ready(function() {
         
         // Click animation
         button.on('click', function(e) {
-            // Prevent default if needed
-            e.preventDefault();
+            // Don't prevent default - allow link to work
             
             // Add scale bounce animation
             button.addClass('scale-bounce');
